@@ -15,17 +15,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import main.domain.Application;
 import main.service.AppService;
 
+/**
+ * 应用管理控制器
+ * 
+ * @author Administrator
+ *
+ */
+
 @Controller
 public class ApplicationController {
 
 	@Autowired
 	private AppService appService;
 
+	/*
+	 * 接收HTTP访问
+	 * 返回application.jsp
+	 */
 	@GetMapping("/app")
 	public String appHome() {
 		return "application";
 	}
 
+	/*
+	 * 返回所有的应用信息
+	 */
 	@GetMapping("/all-apps")
 	public String allApps(HttpServletRequest request) {
 		request.setAttribute("apps", appService.findAll());
@@ -33,6 +47,9 @@ public class ApplicationController {
 		return "application";
 	}
 
+	/*
+	 * 新建应用
+	 */
 	@GetMapping("/new-app")
 	public String newApp(HttpServletRequest request) {
 		Date date = new Date();
@@ -41,6 +58,9 @@ public class ApplicationController {
 		return "application";
 	}
 
+	/*
+	 * 保存提交的应用信息到数据库
+	 */
 	@PostMapping("/save-app")
 	public String saveEnv(@ModelAttribute Application app, BindingResult bind, HttpServletRequest request) {
 		app.setUpdateTime(new Date());
@@ -50,6 +70,9 @@ public class ApplicationController {
 		return "application";
 	}
 
+	/*
+	 * 更新应用信息
+	 */
 	@GetMapping("/update-app")
 	public String updateEnv(@RequestParam Long id, HttpServletRequest request) {
 		request.setAttribute("app", appService.findApp(id));
@@ -57,6 +80,9 @@ public class ApplicationController {
 		return "application";
 	}
 
+	/*
+	 * 删除应用信息
+	 */
 	@GetMapping("/delete-app")
 	public String deleteEnv(@RequestParam Long id, HttpServletRequest request) {
 		appService.delete(id);

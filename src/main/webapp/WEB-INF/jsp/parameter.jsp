@@ -35,6 +35,7 @@
 								<th>ENV_ID</th>
 								<th>KEY</th>
 								<th>VALUE</th>
+								<th>TYPE</th>
 								<th>DESCRIPTION</th>
 								<th>createTime</th>
 								<th>updateTime</th>
@@ -48,6 +49,7 @@
 									<td>${parameter.envId}</td>
 									<td>${parameter.name}</td>
 									<td>${parameter.value}</td>
+									<td>${parameter.type}</td>
 									<td>${parameter.description}</td>
 									<td>${parameter.createTime}</td>
 									<td>${parameter.updateTime}</td>
@@ -88,6 +90,13 @@
 						<div class="col-md-7">
 							<input type="text" class="form-control" name="value"
 								value="${param.value}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3">TYPE</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="type"
+								value="${param.type}">
 						</div>
 					</div>
 					<div class="form-group">

@@ -25,7 +25,10 @@ public class Parameter {
 
 	@Column(name = "value")
 	private String value;
-
+	
+	@Column(name="type")
+	private Integer type; 
+	
 	@Column(name = "description")
 	private String description;
 
@@ -70,6 +73,14 @@ public class Parameter {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 
 	public String getDescription() {

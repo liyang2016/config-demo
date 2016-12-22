@@ -15,9 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import main.domain.Parameter;
 import main.service.ParamService;
 
+/**
+ * 配置参数管理控制器
+ * 
+ * @author liyang
+ *
+ */
 @Controller
 public class ParamController {
-	
+
 	@Autowired
 	private ParamService paramService;
 
@@ -64,4 +70,5 @@ public class ParamController {
 		request.setAttribute("mode", "MODE_DELPARAM");
 		return "parameter";
 	}
+
 }

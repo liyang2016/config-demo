@@ -11,4 +11,5 @@ public class MainController {
 		// request.setAttribute("mode", "MODE_HOME");
 		return "index";
 	}
+
 }

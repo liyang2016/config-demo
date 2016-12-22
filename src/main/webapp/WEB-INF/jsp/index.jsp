@@ -16,6 +16,7 @@
 					<li><a href="env">Environment Manager</a></li>
 					<li><a href="app">Application Manager</a></li>
 					<li><a href="param">Parameter Manager</a></li>
+					<li><a href="search">Search Parameters</a></li>
 				</ul>
 			</div>
 		</div>

@@ -15,17 +15,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import main.domain.Environment;
 import main.service.EnvService;
 
+
+/**
+ * 应用运行环境管理控制器
+ * @author liyang
+ *
+ */
 @Controller
 public class EnvironmentController {
 
 	@Autowired
 	private EnvService envService;
 
+	/*
+	 * 处理请求
+	 * 返回到environment.jsp
+	 */
 	@GetMapping("/env")
 	public String envHome(){
 		return "environment";
 	}
 	
+	/*
+	 * 返回所有的运行环境信息
+	 */
 	@GetMapping("/all-envs")
 	public String allEnvs(HttpServletRequest request) {
 		request.setAttribute("envs", envService.findAll());
@@ -33,6 +46,9 @@ public class EnvironmentController {
 		return "environment";
 	}
 
+	/*
+	 * 新建运行环境
+	 */
 	@GetMapping("/new-env")
 	public String newEnv(HttpServletRequest request) {
 		Date date = new Date();
@@ -41,6 +57,9 @@ public class EnvironmentController {
 		return "environment";
 	}
 
+	/*
+	 * 保存提交的运行环境表单信息，到数据库
+	 */
 	@PostMapping("/save-env")
 	public String saveEnv(@ModelAttribute Environment env, BindingResult bind, HttpServletRequest request) {
 		env.setUpdateTime(new Date());
@@ -50,6 +69,9 @@ public class EnvironmentController {
 		return "environment";
 	}
 
+	/*
+	 * 更新运行环境信息
+	 */
 	@GetMapping("/update-env")
 	public String updateEnv(@RequestParam Long id, HttpServletRequest request) {
 		request.setAttribute("env", envService.findEnv(id));
@@ -57,6 +79,9 @@ public class EnvironmentController {
 		return "environment";
 	}
 
+	/*
+	 * 删除运行环境信息
+	 */
 	@GetMapping("/delete-env")
 	public String deleteEnv(@RequestParam Long id, HttpServletRequest request) {
 		envService.delete(id);

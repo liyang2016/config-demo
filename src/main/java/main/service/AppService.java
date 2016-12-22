@@ -21,7 +21,7 @@ public class AppService {
 	}
 
 	public List<Application> findAll() {
-		List<Application> apps = new ArrayList<>();
+		List<Application> apps = new ArrayList<Application>();
 		for (Application app : appRepository.findAll()) {
 			apps.add(app);
 		}
@@ -38,5 +38,9 @@ public class AppService {
 
 	public void delete(Long id) {
 		appRepository.delete(id);
+	}
+
+	public Long findAppId(String name, String version) {
+		return appRepository.findByNameAndVersion(name, version).get(0).getId();
 	}
 }
