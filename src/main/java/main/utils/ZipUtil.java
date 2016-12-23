@@ -256,11 +256,11 @@ public class ZipUtil {
 		return zipInputStream;
 	}
 
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		zip("C:\\dumpinfo\\test2\\", "C:\\dumpinfo\\test2\\test2.zip", "123456");
 		//zip("D:\\MyCodes\\GitRepository\\devops-wfm\\log\\devops-wfm.log", "d:\\src.zip", "123456");
 		//unzip("d:\\src.zip", "d:\\xxx", "123456");
 		//getInputStream("src\\main\\resources\\application.yml", "d:\\src.zip", "123456");
-	}
+	}*/
 
 }

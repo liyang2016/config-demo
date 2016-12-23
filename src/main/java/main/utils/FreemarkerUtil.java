@@ -14,8 +14,22 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import main.domain.Parameter;
 
-public class FreemarkerUtils {
+/**
+ * FreeMarker工具类
+ * @author liyang
+ *
+ */
+public class FreemarkerUtil {
 
+	/*
+	 * 生成FreeMarker模板需要的数据模型
+	 * 
+	 * @param List<Parameter> 
+	 * 查询数据库得到的Parameter数组
+	 * @return Map<String, String>
+	 * key表示配置的名称
+	 * value表示配置的值
+	 */
 	public static Map<String, String> createModel(List<Parameter> params) {
 		Map<String, String> model = new HashMap<>();
 		for (Parameter parameter : params) {
@@ -24,6 +38,17 @@ public class FreemarkerUtils {
 		return model;
 	}
 
+	/*
+	 * 生成配置文件
+	 * 
+	 * @param
+	 * dataModel FreeMarker数据模型
+	 * srcDir 模板存放目录，绝对路径
+	 * templeName 模板文件名，全名带后缀
+	 * destFile 生成的文件，路径加文件名
+	 * 
+	 * @return void
+	 */
 	public static void produce(Map<String, String> dataModel, String srcDir, String templeName, String destFile) {
 		Configuration configuration = new Configuration(Configuration.VERSION_2_3_25);
 		try {

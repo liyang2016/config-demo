@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,6 +26,7 @@ import main.service.ParamService;
 @Controller
 public class ParamController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ParamController.class);
 	@Autowired
 	private ParamService paramService;
 
@@ -66,6 +69,7 @@ public class ParamController {
 	@GetMapping("/delete-param")
 	public String deleteParam(@RequestParam Long id, HttpServletRequest request) {
 		paramService.delete(id);
+		LOGGER.warn("delete parameters:"+id);
 		request.setAttribute("params", paramService.findAll());
 		request.setAttribute("mode", "MODE_DELPARAM");
 		return "parameter";

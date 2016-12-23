@@ -41,10 +41,16 @@ public class ParamService {
 		paramRepository.delete(id);
 	}
 
+	/*
+	 * 查询出文件配置项
+	 */
 	public List<Parameter> findFileParameter(Long envId) {
 		return paramRepository.findByenvIdAndType(envId, ParameterType.FILEPARAM);
 	}
 
+	/*
+	 * 查询出启动配置项
+	 */
 	public List<Parameter> findStartParameter(Long envId) {
 		return paramRepository.findByenvIdAndType(envId, ParameterType.STARTPARAM);
 	}

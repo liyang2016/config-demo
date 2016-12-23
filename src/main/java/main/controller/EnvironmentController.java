@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,6 +26,7 @@ import main.service.EnvService;
 @Controller
 public class EnvironmentController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(EnvironmentController.class);
 	@Autowired
 	private EnvService envService;
 
@@ -85,6 +88,7 @@ public class EnvironmentController {
 	@GetMapping("/delete-env")
 	public String deleteEnv(@RequestParam Long id, HttpServletRequest request) {
 		envService.delete(id);
+		LOGGER.warn("delete runtime:"+id);
 		request.setAttribute("envs", envService.findAll());
 		request.setAttribute("mode", "MODE_DELENV");
 		return "environment";

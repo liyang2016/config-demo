@@ -1,5 +1,13 @@
 package main.domain;
 
+/**
+ * 用于查询的实体类
+ * appName 应用名称
+ * appVersion 应用版本
+ * appenv 应用运行环境
+ * @author Administrator
+ *
+ */
 public class SearchEntity {
 	private String appName;
 	private String appVersion;

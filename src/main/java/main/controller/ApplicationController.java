@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -25,6 +27,7 @@ import main.service.AppService;
 @Controller
 public class ApplicationController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationController.class);
 	@Autowired
 	private AppService appService;
 
@@ -86,6 +89,7 @@ public class ApplicationController {
 	@GetMapping("/delete-app")
 	public String deleteEnv(@RequestParam Long id, HttpServletRequest request) {
 		appService.delete(id);
+		LOGGER.warn("delete application: "+ id);
 		request.setAttribute("apps", appService.findAll());
 		request.setAttribute("mode", "MODE_DELAPP");
 		return "application";
